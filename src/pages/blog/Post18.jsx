@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-import seuVideo from '/src/assets/video-home.mp4' // <-- Atualize com o caminho correto para o seu vídeo
 
 const animation = {
   hidden: { opacity: 0, y: 50 },
