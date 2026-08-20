@@ -49,7 +49,7 @@ const Post7 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-7.png"
+            src="/assets/blog-post-7.png"
             alt="Comprehensive Scan"
             className="rounded-3xl shadow-xl w-100"
           />
@@ -107,7 +107,7 @@ const Post7 = () => {
           className="grid md:grid-cols-2 gap-12 items-top bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl p-10 border"
         >
           <img
-            src="/src/assets/blog-post-7-3.webp"
+            src="/assets/blog-post-7-3.webp"
             alt="Uso do headset no Comprehensive"
             className="rounded-2xl shadow-lg"
           />

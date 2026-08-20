@@ -49,7 +49,7 @@ const Post1 = () => {
 
           {/* IMAGEM HERO */}
           <img
-            src="/src/assets/blog-post-1-1.jpeg"
+            src="/assets/blog-post-1-1.jpeg"
             alt="Tecnologia AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -78,7 +78,7 @@ const Post1 = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="/src/assets/blog-post-1-2.jpeg"
+            src="/assets/blog-post-1-2.jpeg"
             alt="Frequências AO Scan"
             className="rounded-3xl shadow-lg w-full"
           />
@@ -108,7 +108,7 @@ const Post1 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-1-3.jpeg"
+            src="/assets/blog-post-1-3.jpeg"
             alt="Funcionamento AO Scan"
             className="rounded-2xl shadow-lg"
           />

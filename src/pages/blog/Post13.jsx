@@ -55,7 +55,7 @@ const Post13 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-13-1.webp"
+            src="/assets/blog-post-13-1.webp"
             alt="MultiCast AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />

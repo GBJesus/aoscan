@@ -49,7 +49,7 @@ const Post4 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-4.png"
+            src="/assets/blog-post-4.png"
             alt="Voz Interior"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -94,7 +94,7 @@ const Post4 = () => {
         >
 
           <img
-            src="/src/assets/blog-post-4-3.jpeg"
+            src="/assets/blog-post-4-3.jpeg"
             alt="Áudios do Voz Interior"
             className="rounded-2xl shadow-lg"
           />
@@ -187,7 +187,7 @@ const Post4 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-4-4.webp"
+            src="/assets/blog-post-4-4.webp"
             alt="Áudios do Voz Interior"
             className="rounded-2xl shadow-lg"
           />

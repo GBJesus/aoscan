@@ -93,7 +93,7 @@ const ConnectSection = () => {
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <div className="text-center mb-6">
                 <div className="w-64 h-64 bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center mx-auto mb-4">
-                  <img src="/src/assets/lili.png" alt="AO Scan Brasil" className="h-64 w-64" />
+                  <img src="/assets/lili.png" alt="AO Scan Brasil" className="h-64 w-64" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Lilian Machado de Souza</h3>
                 <p className="text-blue-600 font-medium">Terapeuta Integrativa e Doutoranda em Naturopatia</p>

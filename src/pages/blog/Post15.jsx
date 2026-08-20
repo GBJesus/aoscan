@@ -50,7 +50,7 @@ const Post15 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-15-1.png"
+            src="/assets/blog-post-15-1.png"
             alt="Otimização AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />

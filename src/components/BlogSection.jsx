@@ -21,7 +21,7 @@ const BlogSection = () => {
       date: "2 de Janeiro, 2026",
       readTime: "10 min",
       category: "Educação",
-      image: "/src/assets/blog-post-17.jpeg",
+      image: "/assets/blog-post-17.jpeg",
       featured: true,
       path: "/blog/post-17"
     },
@@ -32,7 +32,7 @@ const BlogSection = () => {
       date: "29 de Dezembro, 2025",
       readTime: "13 min",
       category: "Educação",
-      image: "/src/assets/blog-post-18.png",
+      image: "/assets/blog-post-18.png",
       featured: true,
       path: "/blog/post-18"
     },
@@ -43,7 +43,7 @@ const BlogSection = () => {
       date: "26 de Dezembro, 2025",
       readTime: "8 min",
       category: "Educação",
-      image: "/src/assets/blog-post-16.jpeg",
+      image: "/assets/blog-post-16.jpeg",
       featured: true,
       path: "/blog/post-16"
     },
@@ -54,7 +54,7 @@ const BlogSection = () => {
       date: "15 de Novembro, 2025",
       readTime: "6 min",
       category: "Tecnologia",
-      image: "/src/assets/blog-post-15.png",
+      image: "/assets/blog-post-15.png",
       path: "/blog/post-15"
     },
     {
@@ -64,7 +64,7 @@ const BlogSection = () => {
       date: "30 de Outubro, 2025",
       readTime: "6 min",
       category: "Tecnologia",
-      image: "/src/assets/blog-post-2.png",
+      image: "/assets/blog-post-2.png",
       path: "/blog/post-2"
     },
     {
@@ -74,7 +74,7 @@ const BlogSection = () => {
       date: "23 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-14.png",
+      image: "/assets/blog-post-14.png",
       path: "/blog/post-14"
     },
     {
@@ -84,7 +84,7 @@ const BlogSection = () => {
       date: "22 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-12.png",
+      image: "/assets/blog-post-12.png",
       path: "/blog/post-12"
     },
     {
@@ -94,7 +94,7 @@ const BlogSection = () => {
       date: "17 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-13.png",
+      image: "/assets/blog-post-13.png",
       path: "/blog/post-13"
     },
     {
@@ -104,7 +104,7 @@ const BlogSection = () => {
       date: "16 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-11.png",
+      image: "/assets/blog-post-11.png",
       path: "/blog/post-11"
     },
     {
@@ -114,7 +114,7 @@ const BlogSection = () => {
       date: "15 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-5.png",
+      image: "/assets/blog-post-5.png",
       path: "/blog/post-10"
     },
     {
@@ -124,7 +124,7 @@ const BlogSection = () => {
       date: "10 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-9.png",
+      image: "/assets/blog-post-9.png",
       path: "/blog/post-9"
     },
     {
@@ -134,7 +134,7 @@ const BlogSection = () => {
       date: "9 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-8.png",
+      image: "/assets/blog-post-8.png",
       path: "/blog/post-8"
     },
     {
@@ -144,7 +144,7 @@ const BlogSection = () => {
       date: "8 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-6.png",
+      image: "/assets/blog-post-6.png",
       path: "/blog/post-6"
     },
     {
@@ -154,7 +154,7 @@ const BlogSection = () => {
       date: "7 de Outubro, 2025",
       readTime: "10 min",
       category: "Ciência",
-      image: "/src/assets/blog-post-3.png",
+      image: "/assets/blog-post-3.png",
       path: "/blog/post-3"
     },
     {
@@ -164,7 +164,7 @@ const BlogSection = () => {
       date: "6 de Outubro, 2025",
       readTime: "9 min",
       category: "Tendências",
-      image: "/src/assets/blog-post-7.png",
+      image: "/assets/blog-post-7.png",
       path: "/blog/post-7"
     },
     {
@@ -174,7 +174,7 @@ const BlogSection = () => {
       date: "5 de Outubro, 2025",
       readTime: "12 min",
       category: "Tutorial",
-      image: "/src/assets/blog-post-5.png",
+      image: "/assets/blog-post-5.png",
       path: "/blog/post-5"
     },
     {
@@ -184,7 +184,7 @@ const BlogSection = () => {
       date: "4 de Outubro, 2025",
       readTime: "7 min",
       category: "Casos",
-      image: "/src/assets/blog-post-4.png",
+      image: "/assets/blog-post-4.png",
       path: "/blog/post-4"
     },
     {
@@ -194,7 +194,7 @@ const BlogSection = () => {
       date: "3 de Outubro, 2025",
       readTime: "8 min",
       category: "Educação",
-      image: "/src/assets/blog-post-1-1.jpeg",
+      image: "/assets/blog-post-1-1.jpeg",
       featured: true,
       path: "/blog/post-1"
     }

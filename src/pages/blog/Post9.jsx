@@ -49,7 +49,7 @@ const Post9 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-9-1.webp"
+            src="/assets/blog-post-9-1.webp"
             alt="SEFI AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -89,7 +89,7 @@ const Post9 = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="/src/assets/blog-post-9-1.webp"
+            src="/assets/blog-post-9-1.webp"
             alt="Frequências do SEFI"
             className="rounded-3xl shadow-lg w-full"
           />

@@ -29,7 +29,7 @@ const Post10 = () => {
         "
       >
 
-        <img src="/src/assets/blog-post-5.png" alt="capa varredura rápida" className='mb-16 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-gray-100' />
+        <img src="/assets/blog-post-5.png" alt="capa varredura rápida" className='mb-16 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border border-gray-100' />
 
         <FadeIn>
           <h1 className="lead !text-black-800 !leading-9 !text-4xl  mb-8">Como Criar Sua Própria Playlist de Frequências no SEFI</h1>

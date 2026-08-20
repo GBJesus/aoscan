@@ -50,7 +50,7 @@ const Post5 = () => {
 
           {/* IMAGEM HERO */}
           <img
-            src="/src/assets/blog-post-5-2.jpeg"
+            src="/assets/blog-post-5-2.jpeg"
             alt="Sinais Scan"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -104,7 +104,7 @@ const Post5 = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="/src/assets/blog-post-5-2.jpeg"
+            src="/assets/blog-post-5-2.jpeg"
             alt="Equilíbrio energético"
             className="rounded-3xl shadow-lg w-full"
           />
@@ -135,7 +135,7 @@ const Post5 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-5-3.jpeg"
+            src="/assets/blog-post-5-3.jpeg"
             alt="Funcionamento do Sinais"
             className="rounded-2xl shadow-lg"
           />

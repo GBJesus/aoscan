@@ -53,7 +53,7 @@ const Post17 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-17.jpeg"
+            src="/assets/blog-post-17.jpeg"
             alt="Modelo de acompanhamento AO Scan Brasil"
             className="rounded-3xl shadow-xl w-full"
           />

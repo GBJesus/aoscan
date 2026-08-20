@@ -49,7 +49,7 @@ const Post18 = () => {
             </div>
 
             <img
-              src="/src/assets/blog-post-18.png"
+              src="/assets/blog-post-18.png"
               alt="AO Scan no Brasil"
               className="rounded-3xl shadow-xl w-full"
             />

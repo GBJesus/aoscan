@@ -34,29 +34,29 @@ const Header = () => {
 
   // Estilo para o fundo com a imagem e a sobreposição escura
   let headerStyle = {
-    backgroundImage: "url('/src/assets/fundo-menu.webp')", // Substitua pelo caminho real da sua imagem
+    backgroundImage: "url('/assets/fundo-menu.webp')", // Substitua pelo caminho real da sua imagem
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
 
   if (isBlogPage) {
-    headerStyle.backgroundImage = "url('/src/assets/fundo-menu-blog.jpeg')"
+    headerStyle.backgroundImage = "url('/assets/fundo-menu-blog.jpeg')"
   };
 
   if (isFaqPage) {
-    headerStyle.backgroundImage = "url('/src/assets/fundo-menu-faq.jpeg')"
+    headerStyle.backgroundImage = "url('/assets/fundo-menu-faq.jpeg')"
   };
 
   if (isStoriesPage) {
-    headerStyle.backgroundImage = "url('/src/assets/fundo-menu-stories.jpeg')"
+    headerStyle.backgroundImage = "url('/assets/fundo-menu-stories.jpeg')"
   };
 
   if (isConnectPage) {
-    headerStyle.backgroundImage = "url('/src/assets/fundo-menu-connect.jpeg')"
+    headerStyle.backgroundImage = "url('/assets/fundo-menu-connect.jpeg')"
   };
 
   if (isJoinPage) {
-    headerStyle.backgroundImage = "url('/src/assets/fundo-menu-join.jpeg')"
+    headerStyle.backgroundImage = "url('/assets/fundo-menu-join.jpeg')"
   };
 
   return (
@@ -75,7 +75,7 @@ const Header = () => {
                 <div className="flex items-center">
                   {/* REMOVIDO: O Link aninhado que estava causando o erro de <a> dentro de <a> */}
                   <img
-                    src="/src/assets/logo-menu-negativo.png"
+                    src="/assets/logo-menu-negativo.png"
                     alt="AO Scan Brasil"
                     className="h-20 w-auto"
                   />

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Play, ArrowRight } from 'lucide-react'
 
 // 1. Importe o seu arquivo de vídeo
-import seuVideo from '/src/assets/video-home.mp4' // <-- Atualize com o caminho correto para o seu vídeo
+import seuVideo from '/assets/video-home.mp4' // <-- Atualize com o caminho correto para o seu vídeo
 
 const Hero = () => {
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ const Hero = () => {
     <section id="home" >
       <div className="w-full relative p-4 pb-0">
         <video
-          src="/src/assets/video-banner.mp4"
+          src="/assets/video-banner.mp4"
           autoPlay
           muted
           loop

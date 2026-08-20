@@ -55,7 +55,7 @@ const Post11 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-11-1.jpeg"
+            src="/assets/blog-post-11-1.jpeg"
             alt="SEFIdots"
             className="w-full"
           />
@@ -198,7 +198,7 @@ const Post11 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-11-3.png"
+            src="/assets/blog-post-11-3.png"
             alt="SEFIdots"
             className="w-100"
           />

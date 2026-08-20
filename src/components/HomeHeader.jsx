@@ -30,7 +30,7 @@ const HomeHeader = () => {
           <div className="flex items-center">
             <Link to="/">
               <img
-                src="/src/assets/logo-horiz.png"
+                src="/assets/logo-horiz.png"
                 alt="AO Scan Brasil"
                 className="h-20 w-auto"
               />

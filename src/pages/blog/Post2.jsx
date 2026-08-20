@@ -49,7 +49,7 @@ const Post2 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-2-1.jpeg"
+            src="/assets/blog-post-2-1.jpeg"
             alt="Varredura Rápida"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -84,7 +84,7 @@ const Post2 = () => {
           transition={{ duration: 0.6 }}
         >
           <img
-            src="/src/assets/blog-post-2-2.webp"
+            src="/assets/blog-post-2-2.webp"
             alt="Frequências da Varredura"
             className="rounded-3xl shadow-lg w-full"
           />
@@ -115,7 +115,7 @@ const Post2 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-2-3.webp"
+            src="/assets/blog-post-2-3.webp"
             alt="Proteção energética"
             className="rounded-2xl shadow-lg"
           />

@@ -51,7 +51,7 @@ const Post16 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-16.jpeg"
+            src="/assets/blog-post-16.jpeg"
             alt="Biorressonância e sinais do corpo"
             className="rounded-3xl shadow-xl w-full"
           />

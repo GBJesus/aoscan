@@ -50,7 +50,7 @@ const Post12 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-12-1.png"
+            src="/assets/blog-post-12-1.png"
             alt="AO Tune Diapasões Digitais"
             className="rounded-3xl shadow-xl w-full"
           />

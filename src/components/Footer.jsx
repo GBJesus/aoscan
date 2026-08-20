@@ -39,7 +39,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="/src/assets/logo-negativo.png" 
+                src="/assets/logo-negativo.png" 
                 alt="AO Scan Brasil" 
                 className="h-18 w-auto mr-3"
               />

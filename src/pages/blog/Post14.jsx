@@ -52,7 +52,7 @@ const Post14 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-14-1.webp"
+            src="/assets/blog-post-14-1.webp"
             alt="MindSync AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />

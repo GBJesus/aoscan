@@ -49,7 +49,7 @@ const Post6 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-6.jpeg"
+            src="/assets/blog-post-6.jpeg"
             alt="Body Systems Scan"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -107,7 +107,7 @@ const Post6 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-6-3.jpeg"
+            src="/assets/blog-post-6-3.jpeg"
             alt="Uso do Headset de Condução Óssea"
             className="rounded-2xl shadow-lg"
           />

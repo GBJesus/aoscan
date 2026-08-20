@@ -50,7 +50,7 @@ const Post8 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-8-1.webp"
+            src="/assets/blog-post-8-1.webp"
             alt="MultiScan AO Scan"
             className="rounded-3xl shadow-xl w-full"
           />

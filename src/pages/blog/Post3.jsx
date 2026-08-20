@@ -49,7 +49,7 @@ const Post3 = () => {
           </div>
 
           <img
-            src="/src/assets/blog-post-3.png"
+            src="/assets/blog-post-3.png"
             alt="Varredura Automática"
             className="rounded-3xl shadow-xl w-full"
           />
@@ -92,7 +92,7 @@ const Post3 = () => {
         >
 
           <img
-            src="/src/assets/blog-post-3-2.webp"
+            src="/assets/blog-post-3-2.webp"
             alt="Relatório da Varredura Automática"
             className="rounded-2xl shadow-lg"
           />
