@@ -1,24 +1,5 @@
 import crypto from 'crypto'
 
-function parseCookies(cookieHeader = '') {
-  return cookieHeader
-    .split(';')
-    .map((item) => item.trim())
-    .filter(Boolean)
-    .reduce((acc, item) => {
-      const index = item.indexOf('=')
-
-      if (index === -1) return acc
-
-      const key = item.slice(0, index)
-      const value = item.slice(index + 1)
-
-      acc[key] = decodeURIComponent(value)
-
-      return acc
-    }, {})
-}
-
 function base64UrlEncode(value) {
   return Buffer
     .from(value)
@@ -38,25 +19,6 @@ function sign(value, secret) {
     .replace(/=+$/g, '')
 }
 
-function createSessionToken(user, secret, hours) {
-  const payload = {
-    email: user.email,
-    name: user.name || '',
-    exp: Date.now() + hours * 60 * 60 * 1000
-  }
-
-  const encodedPayload = base64UrlEncode(
-    JSON.stringify(payload)
-  )
-
-  const signature = sign(
-    encodedPayload,
-    secret
-  )
-
-  return `${encodedPayload}.${signature}`
-}
-
 function safeEqual(a, b) {
   const bufferA = Buffer.from(String(a))
   const bufferB = Buffer.from(String(b))
@@ -65,10 +27,7 @@ function safeEqual(a, b) {
     return false
   }
 
-  return crypto.timingSafeEqual(
-    bufferA,
-    bufferB
-  )
+  return crypto.timingSafeEqual(bufferA, bufferB)
 }
 
 export default async function handler(req, res) {
@@ -80,49 +39,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const usersRaw = process.env.TRAINING_USERS
-    const secret = process.env.TRAINING_SESSION_SECRET
-    const sessionHours = Number(
-      process.env.TRAINING_SESSION_HOURS || 12
-    )
-
-    if (!usersRaw || !secret) {
-      console.error(
-        'Variáveis de ambiente da área de treinamento não configuradas.'
-      )
-
-      return res.status(500).json({
-        success: false,
-        message: 'Configuração interna incompleta.'
-      })
-    }
-
-    let users
-
-    try {
-      users = JSON.parse(usersRaw)
-    } catch (error) {
-      console.error(
-        'TRAINING_USERS contém JSON inválido:',
-        error
-      )
-
-      return res.status(500).json({
-        success: false,
-        message: 'Configuração de usuários inválida.'
-      })
-    }
-
-    if (!Array.isArray(users)) {
-      return res.status(500).json({
-        success: false,
-        message: 'Configuração de usuários inválida.'
-      })
-    }
-
-    const email = String(
-      req.body?.email || ''
-    )
+    const email = String(req.body?.email || '')
       .trim()
       .toLowerCase()
 
@@ -133,36 +50,97 @@ export default async function handler(req, res) {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Informe e-mail e senha.'
+        message: 'E-mail e senha são obrigatórios.'
       })
     }
 
-    const user = users.find(
-      (item) =>
-        String(item.email || '')
-          .trim()
-          .toLowerCase() === email
+    const appsScriptUrl =
+      process.env.TRAINING_APPS_SCRIPT_URL
+
+    const secret =
+      process.env.TRAINING_SESSION_SECRET
+
+    const sessionHours = Number(
+      process.env.TRAINING_SESSION_HOURS || 12
     )
 
-    const validPassword =
-      user &&
-      safeEqual(
-        password,
-        String(user.password || '')
+    if (!appsScriptUrl || !secret) {
+      console.error(
+        'Variáveis de ambiente ausentes.'
       )
 
-    if (!user || !validPassword) {
-      return res.status(401).json({
+      return res.status(500).json({
         success: false,
-        message: 'E-mail ou senha inválidos.'
+        message: 'Erro de configuração.'
       })
     }
 
-    const token = createSessionToken(
-      user,
-      secret,
-      sessionHours
-    )
+    const response = await fetch(appsScriptUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: JSON.stringify({
+        action: 'login',
+        email,
+        password
+      })
+    })
+
+    const text = await response.text()
+
+    let data
+
+    try {
+      data = JSON.parse(text)
+    } catch {
+      console.error(
+        'Resposta inválida do Apps Script:',
+        text
+      )
+
+      return res.status(502).json({
+        success: false,
+        message: 'Erro ao validar acesso.'
+      })
+    }
+
+    if (
+      !data.success ||
+      !data.authenticated ||
+      !data.user
+    ) {
+      return res.status(401).json({
+        success: false,
+        message:
+          data.message ||
+          'E-mail ou senha inválidos.'
+      })
+    }
+
+    const expiresAt =
+      Date.now() +
+      sessionHours *
+        60 *
+        60 *
+        1000
+
+    const payload = {
+      email: data.user.email,
+      name: data.user.name,
+      exp: expiresAt
+    }
+
+    const encodedPayload =
+      base64UrlEncode(
+        JSON.stringify(payload)
+      )
+
+    const signature =
+      sign(encodedPayload, secret)
+
+    const token =
+      `${encodedPayload}.${signature}`
 
     const maxAge =
       sessionHours * 60 * 60
@@ -182,19 +160,20 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       user: {
-        email: user.email,
-        name: user.name || ''
+        name: data.user.name,
+        email: data.user.email
       }
     })
+
   } catch (error) {
     console.error(
-      'Erro no login do treinamento:',
+      'Erro no login:',
       error
     )
 
     return res.status(500).json({
       success: false,
-      message: 'Erro interno ao realizar login.'
+      message: 'Erro interno.'
     })
   }
 }
