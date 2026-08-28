@@ -70,31 +70,20 @@
     </div>
 
     <script>
-        // document.getElementById('login-form').addEventListener('submit', function (event) {
-        //     event.preventDefault();
-        //     const email = document.getElementById('email').value;
-        //     const password = document.getElementById('password').value;
-        //     const errorMessage = document.getElementById('error-message');
-        //     if (login(email, password)) {
-        //         window.location.href = '../';
-        //     } else {
-        //         errorMessage.textContent = 'E-mail ou senha inválidos. Tente novamente.';
-        //         errorMessage.classList.remove('hidden');
-        //     }
-        // });
+        (() => {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.getElementById('toggle-password');
+            const iconEye = document.getElementById('icon-eye');
+            const iconEyeOff = document.getElementById('icon-eye-off');
 
-        const passwordInput = document.getElementById('password');
-        const toggleButton = document.getElementById('toggle-password');
-        const iconEye = document.getElementById('icon-eye');
-        const iconEyeOff = document.getElementById('icon-eye-off');
+            toggleButton.addEventListener('click', () => {
+                const isPassword = passwordInput.type === 'password';
 
-        toggleButton.addEventListener('click', () => {
-            const isPassword = passwordInput.type === 'password';
-
-            passwordInput.type = isPassword ? 'text' : 'password';
-            iconEye.classList.toggle('hidden', isPassword);
-            iconEyeOff.classList.toggle('hidden', !isPassword);
-        });
+                passwordInput.type = isPassword ? 'text' : 'password';
+                iconEye.classList.toggle('hidden', isPassword);
+                iconEyeOff.classList.toggle('hidden', !isPassword);
+            });
+        })();
     </script>
 
     <script src="./auth.js"></script>
