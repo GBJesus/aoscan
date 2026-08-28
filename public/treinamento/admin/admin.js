@@ -225,30 +225,55 @@ function renderUsers(users) {
       'border-b border-gray-100 last:border-0'
 
     row.innerHTML = `
-      <td class="py-4 pr-4 font-medium text-gray-900">
-        ${escapeHtml(user.name)}
-      </td>
+  <td class="py-4 pr-4 font-medium text-gray-900">
+    ${escapeHtml(user.name)}
+  </td>
 
-      <td class="py-4 pr-4 text-gray-600">
-        ${escapeHtml(user.email)}
-      </td>
+  <td class="py-4 pr-4 text-gray-600">
+    ${escapeHtml(user.email)}
+  </td>
 
-      <td class="py-4 pr-4">
-        ${getProfileBadge(user.profile)}
-      </td>
+  <td class="py-4 pr-4">
+    ${getProfileBadge(user.profile)}
+  </td>
 
-      <td class="py-4 pr-4">
-        ${getStatusBadge(user.status)}
-      </td>
+  <td class="py-4 pr-4">
+    ${getStatusBadge(user.status)}
+  </td>
 
-      <td class="py-4 pr-4 text-gray-500 whitespace-nowrap">
-        ${escapeHtml(user.createdAt || '-')}
-      </td>
+  <td class="py-4 pr-4 text-gray-500 whitespace-nowrap">
+    ${escapeHtml(user.createdAt || '-')}
+  </td>
 
-      <td class="py-4 text-gray-500 whitespace-nowrap">
-        ${escapeHtml(user.lastAccess || '-')}
-      </td>
-    `
+  <td class="py-4 pr-4 text-gray-500 whitespace-nowrap">
+    ${escapeHtml(user.lastAccess || '-')}
+  </td>
+
+  <td class="py-4 whitespace-nowrap">
+    ${String(user.status || '').toUpperCase() === 'ATIVO'
+        ? `
+          <button
+            type="button"
+            data-user-id="${escapeHtml(user.id)}"
+            data-new-status="INATIVO"
+            class="toggle-status text-sm font-medium text-red-600 hover:underline"
+          >
+            Inativar
+          </button>
+        `
+        : `
+          <button
+            type="button"
+            data-user-id="${escapeHtml(user.id)}"
+            data-new-status="ATIVO"
+            class="toggle-status text-sm font-medium text-green-600 hover:underline"
+          >
+            Ativar
+          </button>
+        `
+      }
+  </td>
+`
 
     usersTableBody.appendChild(row)
   })
@@ -292,6 +317,72 @@ async function loadUsers() {
     usersLoading.classList.add('hidden')
   }
 }
+
+async function updateUserStatus(userId, status, button) {
+  const originalText = button.textContent
+
+  button.disabled = true
+  button.textContent = 'Salvando...'
+
+  try {
+    const response = await fetch(
+      '/api/treinamento-admin-update-status',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify({
+          userId,
+          status
+        })
+      }
+    )
+
+    const data = await response.json()
+
+    if (!response.ok || !data.success) {
+      throw new Error(
+        data.message ||
+        'Não foi possível alterar o status.'
+      )
+    }
+
+    await loadUsers()
+
+  } catch (error) {
+    alert(
+      error.message ||
+      'Erro ao alterar status.'
+    )
+
+    button.disabled = false
+    button.textContent = originalText
+  }
+}
+
+usersTableBody.addEventListener(
+  'click',
+  function (event) {
+    const button =
+      event.target.closest('.toggle-status')
+
+    if (!button) return
+
+    const userId =
+      button.dataset.userId
+
+    const newStatus =
+      button.dataset.newStatus
+
+    updateUserStatus(
+      userId,
+      newStatus,
+      button
+    )
+  }
+)
 
 
 refreshUsersButton.addEventListener(
