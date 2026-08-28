@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/treinamento",
+      "destination": "/treinamento/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/treinamento/",
+      "destination": "/treinamento/index.html",
+      "permanent": false
+    }
+  ]
+}

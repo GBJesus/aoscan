@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Treinamentos | AO Scan Brasil</title>
+
+  <!-- TAILWIND CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AUTH -->
+  <script src="./auth.js"></script>
+  <script>
+    // Garante que só quem está logado acesse essa página
+    protectPage();
+  </script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 via-white to-green-50 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 
+                flex flex-wrap items-center justify-between gap-4">
+
+      <!-- Logo menor em mobile -->
+      <img src="./assets/logo-horiz.png" alt="" class="w-28 sm:w-40 lg:w-52">
+
+      <!-- Texto responsivo -->
+      <h1 class="text-sm sm:text-lg md:text-xl font-bold text-gray-800">
+        Olá,
+        <span id="user-name" class="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          Usuário
+        </span>!
+      </h1>
+
+      <button onclick="logout()"
+        class="px-3 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200">
+        Sair
+      </button>
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- TÍTULO / INTRO GERAL -->
+    <section class="mb-10 sm:mb-12 mt-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+        Meus treinamentos
+      </h2>
+      <p class="text-sm sm:text-base text-gray-600">
+        Aqui você encontra tudo o que precisa para acessar os seus conteúdos do AO Scan.
+      </p>
+    </section>
+
+    <!-- LISTA DE CURSOS (estilo “cards” tipo Hotmart) -->
+    <section>
+      <!-- <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-4">
+        Minhas compras
+      </h3> -->
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- CARD 1 – Treinamento Básico AO Scan -->
+        <article
+          class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-shadow">
+          <!-- “Capa” do curso -->
+          <div
+            class="h-40 sm:h-48 bg-gradient-to-br from-green-500 via-emerald-500 to-blue-600 flex items-center justify-center">
+            <div class="text-center px-4">
+              <p class="text-xs font-semibold tracking-[0.2em] text-white/80 uppercase mb-2">
+                Curso online
+              </p>
+              <h4 class="text-xl sm:text-2xl font-bold text-white">
+                Treinamento Básico AO Scan
+              </h4>
+            </div>
+          </div>
+
+          <!-- Informações do curso -->
+          <div class="flex-1 flex flex-col p-4 sm:p-5">
+            <p class="text-xs sm:text-sm text-gray-500 mb-1">
+              Treinamento AO Scan Brasil
+            </p>
+            <p class="text-sm sm:text-base text-gray-700 flex-1">
+              Aprenda a navegar, compreender e utilizar o AO Scan com segurança,
+              autonomia e confiança, passo a passo.
+            </p>
+
+            <!-- Botões -->
+            <div class="mt-4 flex flex-col sm:flex-row gap-3">
+              <!-- <button
+                class="w-full sm:flex-1 text-xs sm:text-sm font-medium text-gray-700 border border-gray-300 rounded-lg px-3 py-2 hover:bg-gray-50">
+                Mostrar detalhes
+              </button> -->
+
+              <!-- IMPORTANTE: ajuste o href para o nome REAL da página das aulas -->
+              <button onclick="window.location.href='./treinamento-basico-aoscan'"
+                class="w-full sm:flex-1 text-xs sm:text-sm font-semibold text-white rounded-lg px-3 py-2 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 flex items-center justify-center gap-2">
+                Acessar aulas
+                <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Se quiser adicionar mais cursos no futuro, copie o card acima e adapte -->
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER SIMPLES -->
+  <footer class="bg-gray-900 text-white mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+      <!-- CONTEÚDO PRINCIPAL DO FOOTER -->
+      <div class="grid lg:grid-cols-5 gap-8 mb-12">
+        <!-- BRAND / CONTATO -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center mb-6">
+            <img src="./assets/logo-negativo.png" alt="AO Scan Brasil" class="h-16 w-auto mr-3" />
+            <div>
+              <h3 class="text-xl font-bold">AO Scan Brasil</h3>
+              <p class="text-sm text-gray-400">Independent Quantum Living Advocate</p>
+            </div>
+          </div>
+
+          <p class="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">
+            Somos a ponte para que brasileiros conheçam e tenham acesso à tecnologia revolucionária
+            AO Scan — entre ciência e intuição, entre tecnologia e natureza.
+          </p>
+
+          <div class="space-y-3 text-sm sm:text-base">
+            <div class="flex items-center space-x-3 text-gray-300">
+              <span class="text-blue-400 text-lg">✉️</span>
+              <span>contato@aoscanbrasil.com</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-300">
+              <span class="text-green-400 text-lg">📞</span>
+              <span>+1 (201) 486-8913</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-300">
+              <span class="text-red-400 text-lg">📍</span>
+              <span>Brasil</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Se quiser, aqui depois você pode adicionar colunas de links (Empresa, Serviços, etc.) -->
+      </div>
+
+      <!-- COPYRIGHT / AVISO LEGAL -->
+      <div class="border-t border-gray-800 pt-8 text-center space-y-4">
+        <p class="text-gray-400 text-sm sm:text-base">
+          © <span id="current-year"></span> AO Scan Brasil. Todos os direitos reservados.
+        </p>
+
+        <div class="text-xs text-gray-500 max-w-4xl mx-auto leading-relaxed">
+          <p class="mb-2">
+            <strong>Aviso Legal:</strong> O AO Scan é uma ferramenta de bem-estar e não substitui consultas
+            médicas,
+            diagnósticos ou tratamentos médicos. Sempre consulte um profissional de saúde qualificado para
+            questões médicas.
+          </p>
+          <p>
+            AO Scan™ é uma marca registrada da Solex Global. Este site é operado por um Independent Quantum
+            Living Advocate
+            autorizado e não é afiliado diretamente à Solex Global LLC.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      // Nome do usuário (se vier do auth.js)
+      if (typeof getActiveUser === 'function') {
+        const user = await getActiveUser();
+
+        if (user && user.name) {
+          const userNameEl =
+            document.getElementById('user-name');
+
+          if (userNameEl) {
+            userNameEl.textContent = user.name;
+          }
+        }
+      }
+
+      // Ano do footer
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+
+</html>
