@@ -250,6 +250,8 @@ function renderUsers(users) {
   </td>
 
   <td class="py-4 whitespace-nowrap">
+  <div class="flex items-center gap-3">
+
     ${String(user.status || '').toUpperCase() === 'ATIVO'
         ? `
           <button
@@ -272,7 +274,18 @@ function renderUsers(users) {
           </button>
         `
       }
-  </td>
+
+    <button
+      type="button"
+      data-user-id="${escapeHtml(user.id)}"
+      data-user-name="${escapeHtml(user.name)}"
+      class="reset-password-button text-sm font-medium text-blue-600 hover:underline"
+    >
+      Redefinir senha
+    </button>
+
+  </div>
+</td>
 `
 
     usersTableBody.appendChild(row)
@@ -391,3 +404,202 @@ refreshUsersButton.addEventListener(
 )
 
 loadUsers()
+
+const resetPasswordModal =
+  document.getElementById('reset-password-modal')
+
+const resetPasswordForm =
+  document.getElementById('reset-password-form')
+
+const resetPasswordUserId =
+  document.getElementById('reset-password-user-id')
+
+const resetPasswordUser =
+  document.getElementById('reset-password-user')
+
+const newPassword =
+  document.getElementById('new-password')
+
+const confirmNewPassword =
+  document.getElementById('confirm-new-password')
+
+const resetPasswordMessage =
+  document.getElementById('reset-password-message')
+
+const saveResetPassword =
+  document.getElementById('save-reset-password')
+
+const closeResetPasswordModalButton =
+  document.getElementById('close-reset-password-modal')
+
+const cancelResetPasswordButton =
+  document.getElementById('cancel-reset-password')
+
+
+function openResetPasswordModal(
+  userId,
+  userName
+) {
+  resetPasswordForm.reset()
+
+  resetPasswordUserId.value = userId
+
+  resetPasswordUser.textContent =
+    `Usuário: ${userName}`
+
+  resetPasswordMessage.classList.add(
+    'hidden'
+  )
+
+  resetPasswordModal.classList.remove(
+    'hidden'
+  )
+
+  newPassword.focus()
+}
+
+
+function closeResetPasswordModal() {
+  resetPasswordModal.classList.add(
+    'hidden'
+  )
+
+  resetPasswordForm.reset()
+
+  resetPasswordUserId.value = ''
+
+  resetPasswordMessage.classList.add(
+    'hidden'
+  )
+}
+
+
+usersTableBody.addEventListener(
+  'click',
+  function (event) {
+    const button =
+      event.target.closest(
+        '.reset-password-button'
+      )
+
+    if (!button) return
+
+    openResetPasswordModal(
+      button.dataset.userId,
+      button.dataset.userName
+    )
+  }
+)
+
+
+resetPasswordForm.addEventListener(
+  'submit',
+  async function (event) {
+    event.preventDefault()
+
+    const userId =
+      resetPasswordUserId.value
+
+    const password =
+      newPassword.value
+
+    const confirmation =
+      confirmNewPassword.value
+
+    resetPasswordMessage.classList.add(
+      'hidden'
+    )
+
+    if (password !== confirmation) {
+      resetPasswordMessage.textContent =
+        'As senhas não coincidem.'
+
+      resetPasswordMessage.className =
+        'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700 border border-red-200'
+
+      return
+    }
+
+    if (password.length < 8) {
+      resetPasswordMessage.textContent =
+        'A senha deve ter pelo menos 8 caracteres.'
+
+      resetPasswordMessage.className =
+        'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700 border border-red-200'
+
+      return
+    }
+
+    saveResetPassword.disabled = true
+    saveResetPassword.textContent =
+      'Salvando...'
+
+    try {
+      const response = await fetch(
+        '/api/treinamento-admin-reset-password',
+        {
+          method: 'POST',
+
+          headers: {
+            'Content-Type':
+              'application/json'
+          },
+
+          credentials: 'same-origin',
+
+          body: JSON.stringify({
+            userId,
+            password
+          })
+        }
+      )
+
+      const data =
+        await response.json()
+
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message ||
+          'Não foi possível redefinir a senha.'
+        )
+      }
+
+      resetPasswordMessage.textContent =
+        'Senha redefinida com sucesso.'
+
+      resetPasswordMessage.className =
+        'text-sm rounded-lg px-4 py-3 bg-green-50 text-green-700 border border-green-200'
+
+      newPassword.value = ''
+      confirmNewPassword.value = ''
+
+      setTimeout(() => {
+        closeResetPasswordModal()
+      }, 1200)
+
+    } catch (error) {
+      resetPasswordMessage.textContent =
+        error.message ||
+        'Erro ao redefinir senha.'
+
+      resetPasswordMessage.className =
+        'text-sm rounded-lg px-4 py-3 bg-red-50 text-red-700 border border-red-200'
+
+    } finally {
+      saveResetPassword.disabled = false
+      saveResetPassword.textContent =
+        'Salvar nova senha'
+    }
+  }
+)
+
+
+closeResetPasswordModalButton.addEventListener(
+  'click',
+  closeResetPasswordModal
+)
+
+cancelResetPasswordButton.addEventListener(
+  'click',
+  closeResetPasswordModal
+)
