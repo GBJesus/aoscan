@@ -120,13 +120,10 @@ export default function middleware(request) {
   /*
    * Rotas públicas dentro de /treinamento
    */
-  const publicRoutes = [
-    '/treinamento/login',
-    '/treinamento/login/',
-    '/treinamento/login/index.html'
-  ]
-
-  if (publicRoutes.includes(pathname)) {
+  if (
+    pathname === '/treinamento/login' ||
+    pathname.startsWith('/treinamento/login/')
+  ) {
     return next()
   }
 
