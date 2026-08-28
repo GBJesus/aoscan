@@ -127,7 +127,7 @@ export default function middleware(request) {
   ]
 
   if (publicRoutes.includes(pathname)) {
-    return
+    return next()
   }
 
   /*
@@ -136,7 +136,7 @@ export default function middleware(request) {
   if (
     !pathname.startsWith('/treinamento')
   ) {
-    return
+    return next()
   }
 
   const cookies = parseCookies(
