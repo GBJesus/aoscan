@@ -144,7 +144,8 @@ export default function handler(req, res) {
 
     user: {
       name: user.name || '',
-      email: user.email || ''
+      email: user.email || '',
+      profile: user.profile || 'ALUNO'
     }
   })
 }

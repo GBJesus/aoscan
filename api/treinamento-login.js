@@ -121,13 +121,14 @@ export default async function handler(req, res) {
     const expiresAt =
       Date.now() +
       sessionHours *
-        60 *
-        60 *
-        1000
+      60 *
+      60 *
+      1000
 
     const payload = {
       email: data.user.email,
       name: data.user.name,
+      profile: data.user.profile || 'ALUNO',
       exp: expiresAt
     }
 
@@ -161,7 +162,8 @@ export default async function handler(req, res) {
       success: true,
       user: {
         name: data.user.name,
-        email: data.user.email
+        email: data.user.email,
+        profile: data.user.profile || 'ALUNO'
       }
     })
 

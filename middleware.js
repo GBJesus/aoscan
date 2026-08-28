@@ -59,16 +59,16 @@ function decodePayload(encodedPayload) {
   )
 }
 
-function isValidSession(token, secret) {
+function getSessionPayload(token, secret) {
   try {
     if (!token || !secret) {
-      return false
+      return null
     }
 
     const parts = token.split('.')
 
     if (parts.length !== 2) {
-      return false
+      return null
     }
 
     const [
@@ -87,7 +87,7 @@ function isValidSession(token, secret) {
         expectedSignature
       )
     ) {
-      return false
+      return null
     }
 
     const payload = decodePayload(
@@ -95,21 +95,22 @@ function isValidSession(token, secret) {
     )
 
     if (!payload.exp) {
-      return false
+      return null
     }
 
     if (Date.now() > payload.exp) {
-      return false
+      return null
     }
 
-    return true
+    return payload
+
   } catch (error) {
     console.error(
       'Erro ao validar sessão:',
       error
     )
 
-    return false
+    return null
   }
 }
 
@@ -146,12 +147,12 @@ export default function middleware(request) {
   const secret =
     process.env.TRAINING_SESSION_SECRET
 
-  const valid = isValidSession(
+  const session = getSessionPayload(
     token,
     secret
   )
 
-  if (!valid) {
+  if (!session) {
     const loginUrl = new URL(
       '/treinamento/login/index.html',
       request.url
@@ -161,6 +162,32 @@ export default function middleware(request) {
       loginUrl,
       302
     )
+  }
+
+  /*
+   * Área administrativa:
+   * somente usuários ADMIN.
+   */
+  if (
+    pathname.startsWith('/treinamento/admin')
+  ) {
+    const profile = String(
+      session.profile || ''
+    )
+      .trim()
+      .toUpperCase()
+
+    if (profile !== 'ADMIN') {
+      const trainingUrl = new URL(
+        '/treinamento/',
+        request.url
+      )
+
+      return Response.redirect(
+        trainingUrl,
+        302
+      )
+    }
   }
 
   return next()
